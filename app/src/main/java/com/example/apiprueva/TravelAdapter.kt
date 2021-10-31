@@ -19,7 +19,7 @@ class TravelAdapter():RecyclerView.Adapter<TravelAdapter.TravelViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: TravelViewHolder, position: Int) {
-        //
+        holder.bind(traverList[position])
     }
 
     override fun getItemCount(): Int {
@@ -31,14 +31,12 @@ class TravelAdapter():RecyclerView.Adapter<TravelAdapter.TravelViewHolder>() {
         notifyDataSetChanged()
     }
 
-
    inner class TravelViewHolder(private val binding:ViajeRowBinding ) :
       RecyclerView.ViewHolder(binding.root) {
        fun bind(item: Travel) {
            binding.viajeIdtextView.text = item.travelId.toString()
            binding.observaciontextView.text = item.observaciones
            binding.millastextView.text = item.millas.toString()
-
        }
    }
 }

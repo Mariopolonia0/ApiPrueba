@@ -2,27 +2,29 @@ package com.example.apiprueva
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.apiprueva.databinding.ActivityMainBinding
-import kotlinx.coroutines.launch
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel :MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        lifecycleScope.launchWhenCreated {
-            val lista = RetrofitInstance.api.GetTravels()
-            //val cant = lista.size
+        viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
-            var adapter = TravelAdapter()
-            adapter.sumitList(lista)
+        viewModel.lista.observe(this){
+            val adapter = TravelAdapter()
+            adapter.sumitList(it)
             binding.listatravelsrecyclerview.adapter = adapter
-
-       }
+        }
     }
 }
