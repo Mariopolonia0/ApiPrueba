@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/travelsrecyclerview"
+        android:id="@+id/listatravelsrecyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="16dp"
