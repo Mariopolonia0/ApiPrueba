@@ -1,7 +1,8 @@
 package com.example.apiprueva
 
 data class Travel(
-    val millas: Int,
+    val travelId: Int,
     val observaciones: String,
-    val travelId: Int
+    val millas: Int
 )
+
